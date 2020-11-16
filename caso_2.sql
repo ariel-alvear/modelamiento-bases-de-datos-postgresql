@@ -67,3 +67,10 @@ INSERT INTO students_table (id, student_name, student_lastname, student_class, s
 INSERT INTO students_table (id, student_name, student_lastname, student_class, students_test) VALUES ('20000000-2', 'hernan', 'hernandez', 1, 2);
 INSERT INTO students_table (id, student_name, student_lastname, student_class, students_test) VALUES ('20000000-3', 'luz', 'maria', 1, 3);
 
+
+--verificaremos las tablas
+SELECT * FROM teacher_departaments_table;
+SELECT * FROM teachers_table;
+SELECT * FROM tests_califications_table;
+SELECT * FROM students_table;
+SELECT * FROM class_groups_table;
