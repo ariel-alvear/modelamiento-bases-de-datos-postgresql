@@ -13,33 +13,32 @@ CREATE TABLE teacher_departaments_table(
 );
 
 CREATE TABLE teachers_table(
-    id VARCHAR(10), --en este campo va el rut, SIN PUNTOS Y CON GUION
+    id SERIAL,
     teacher_name VARCHAR(40),
-    teacher_lastname VARCHAR(40),
     teacher_departament INT,
     PRIMARY KEY (id),
     FOREIGN KEY (teacher_departament) REFERENCES teacher_departaments_table(id)
 );
 
+CREATE TABLE students_table(
+    id SERIAL,
+    rut VARCHAR(10), --en este campo va el rut, SIN PUNTOS Y CON GUION
+    student_name VARCHAR(40),
+    student_class INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (student_class) REFERENCES class_groups_table(id)
+);
+
 CREATE TABLE tests_califications_table(
     test_id SERIAL,
     calification INT,
-    evaluator_teacher VARCHAR(10),
+    evaluator_id INT,
+    student_id INT,
     PRIMARY KEY (test_id),
-    FOREIGN KEY (evaluator_teacher) REFERENCES teachers_table(id)
+    FOREIGN KEY (evaluator_id) REFERENCES teachers_table(id),
+    FOREIGN KEY (student_id) REFERENCES students_table(id)
 );
 
-
-CREATE TABLE students_table(
-    id VARCHAR(10), --en este campo va el rut, SIN PUNTOS Y CON GUION
-    student_name VARCHAR(40),
-    student_lastname VARCHAR(40),
-    student_class INT,
-    students_test INT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (student_class) REFERENCES class_groups_table(id),
-    FOREIGN KEY (students_test) REFERENCES tests_califications_table(test_id)
-);
 
 --agregaremos datos a las tablas para probar que estén OK
 --3 registros en nombres curso
@@ -53,19 +52,21 @@ INSERT INTO teacher_departaments_table (departament_name) VALUES ('Matemáticas'
 INSERT INTO teacher_departaments_table (departament_name) VALUES ('Ciencias Sociales');
 
 --3 registros en tabla de profesores
-INSERT INTO teachers_table (id, teacher_name, teacher_lastname, teacher_departament) VALUES ('10000000-1', 'julio', 'rodriguez', 1);
-INSERT INTO teachers_table (id, teacher_name, teacher_lastname, teacher_departament) VALUES ('10000000-2', 'agustin', 'hernandez', 2);
-INSERT INTO teachers_table (id, teacher_name, teacher_lastname, teacher_departament) VALUES ('10000000-3', 'ximena', 'rojas', 3);
-
---3 registros en tabla de notas
-INSERT INTO tests_califications_table (calification, evaluator_teacher) VALUES (7, '10000000-1');
-INSERT INTO tests_califications_table (calification, evaluator_teacher) VALUES (5, '10000000-1');
-INSERT INTO tests_califications_table (calification, evaluator_teacher) VALUES (6.5, '10000000-2');
+INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-1', 'julio', 1);
+INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-2', 'agustin', 2);
+INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-3', 'ximena', 3);
 
 --3registros en tabla de estudiantes
-INSERT INTO students_table (id, student_name, student_lastname, student_class, students_test) VALUES ('20000000-1', 'juanito', 'perez', 1, 1);
-INSERT INTO students_table (id, student_name, student_lastname, student_class, students_test) VALUES ('20000000-2', 'hernan', 'hernandez', 1, 2);
-INSERT INTO students_table (id, student_name, student_lastname, student_class, students_test) VALUES ('20000000-3', 'luz', 'maria', 1, 3);
+INSERT INTO students_table (rut, student_name, student_class) VALUES ('20000000-1', 'juanito', 1);
+INSERT INTO students_table (rut, student_name, student_class) VALUES ('20000000-2', 'hernan', 1);
+INSERT INTO students_table (rut, student_name, student_class) VALUES ('20000000-3', 'luz', 1);
+
+--3 registros en tabla de notas
+INSERT INTO tests_califications_table (calification, evaluator_id, student_id) VALUES (7, 1, 1);
+INSERT INTO tests_califications_table (calification, evaluator_id, student_id) VALUES (5, 1, 1);
+INSERT INTO tests_califications_table (calification, evaluator_id, student_id) VALUES (6.5, 2, 3);
+
+
 
 
 --verificaremos las tablas

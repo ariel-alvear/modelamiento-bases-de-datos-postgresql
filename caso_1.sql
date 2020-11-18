@@ -7,9 +7,9 @@ CREATE TABLE departaments_table(
 );
 
 CREATE TABLE workers_table(
-    id VARCHAR(10), --en este campo va el rut, SIN PUNTOS Y CON GUION
+    id SERIAL,
+    rut VARCHAR(10), --en este campo va el rut, SIN PUNTOS Y CON GUION
     worker_name VARCHAR(40),
-    worker_lastname VARCHAR(40),
     direction VARCHAR(200),
     departament_id INT,
     PRIMARY KEY (id),
@@ -32,16 +32,16 @@ INSERT INTO departaments_table (departament_name) VALUES ('Soporte');
 INSERT INTO departaments_table (departament_name) VALUES ('Gerencia Comercial');
 
 --3 registro en tabla trabajadores
-INSERT INTO workers_table (id, worker_name, worker_lastname, direction, departament_id) VALUES ('17700000-1', 'juan', 'perez', 'bustamente 48, santiago centro', 1);
-INSERT INTO workers_table (id, worker_name, worker_lastname, direction, departament_id) VALUES ('17700000-2', 'juan pablo', 'pereira', 'el golf 50, las condes', 2);
-INSERT INTO workers_table (id, worker_name, worker_lastname, direction, departament_id) VALUES ('17700000-3', 'tomas', 'hernandez', 'salesianos 300, san miguel', 3);
+INSERT INTO workers_table (rut, worker_name, direction, departament_id) VALUES ('17700000-1', 'juan', 'bustamente 48, santiago centro', 1);
+INSERT INTO workers_table (rut, worker_name, direction, departament_id) VALUES ('17700000-2', 'juan pablo', 'el golf 50, las condes', 2);
+INSERT INTO workers_table (rut, worker_name, direction, departament_id) VALUES ('17700000-3', 'tomas', 'salesianos 300, san miguel', 3);
 
 --3 registros en tabla salarios
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES ('17700000-1', 'sueldo_marzo_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES ('17700000-1', 'sueldo_abril_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES ('17700000-1', 'sueldo_mayo_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES ('17700000-2', 'sueldo_marzo_17700000-2');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES ('17700000-3', 'sueldo_marzo_17700000-3');
+INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_marzo_17700000-1');
+INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_abril_17700000-1');
+INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_mayo_17700000-1');
+INSERT INTO salaries_table (worker_dni, drive_file) VALUES (2, 'sueldo_marzo_17700000-2');
+INSERT INTO salaries_table (worker_dni, drive_file) VALUES (3, 'sueldo_marzo_17700000-3');
 
 
 --revisamos
