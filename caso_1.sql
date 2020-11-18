@@ -18,10 +18,10 @@ CREATE TABLE workers_table(
 
 CREATE TABLE salaries_table(
     id SERIAL,
-    worker_dni VARCHAR(10),
+    worker_id INT,
     drive_file VARCHAR(30),
     PRIMARY KEY (id),
-    FOREIGN KEY (worker_dni) REFERENCES workers_table(id)
+    FOREIGN KEY (worker_id) REFERENCES workers_table(id)
 );
 
 
@@ -37,11 +37,11 @@ INSERT INTO workers_table (rut, worker_name, direction, departament_id) VALUES (
 INSERT INTO workers_table (rut, worker_name, direction, departament_id) VALUES ('17700000-3', 'tomas', 'salesianos 300, san miguel', 3);
 
 --3 registros en tabla salarios
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_marzo_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_abril_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES (1, 'sueldo_mayo_17700000-1');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES (2, 'sueldo_marzo_17700000-2');
-INSERT INTO salaries_table (worker_dni, drive_file) VALUES (3, 'sueldo_marzo_17700000-3');
+INSERT INTO salaries_table (worker_id, drive_file) VALUES (1, 'sueldo_marzo_17700000-1');
+INSERT INTO salaries_table (worker_id, drive_file) VALUES (1, 'sueldo_abril_17700000-1');
+INSERT INTO salaries_table (worker_id, drive_file) VALUES (1, 'sueldo_mayo_17700000-1');
+INSERT INTO salaries_table (worker_id, drive_file) VALUES (2, 'sueldo_marzo_17700000-2');
+INSERT INTO salaries_table (worker_id, drive_file) VALUES (3, 'sueldo_marzo_17700000-3');
 
 
 --revisamos
