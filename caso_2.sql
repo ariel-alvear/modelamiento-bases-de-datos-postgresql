@@ -52,9 +52,9 @@ INSERT INTO teacher_departaments_table (departament_name) VALUES ('Matemáticas'
 INSERT INTO teacher_departaments_table (departament_name) VALUES ('Ciencias Sociales');
 
 --3 registros en tabla de profesores
-INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-1', 'julio', 1);
-INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-2', 'agustin', 2);
-INSERT INTO teachers_table (rut, teacher_name, teacher_departament) VALUES ('10000000-3', 'ximena', 3);
+INSERT INTO teachers_table (teacher_name, teacher_departament) VALUES ('julio', 1);
+INSERT INTO teachers_table (teacher_name, teacher_departament) VALUES ('agustin', 2);
+INSERT INTO teachers_table (teacher_name, teacher_departament) VALUES ('ximena', 3);
 
 --3registros en tabla de estudiantes
 INSERT INTO students_table (rut, student_name, student_class) VALUES ('20000000-1', 'juanito', 1);
